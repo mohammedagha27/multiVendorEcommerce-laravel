@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Dashboard;
 use App\Http\Controllers\Controller;
 use App\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class CategoriesController extends Controller
 {
@@ -15,7 +16,7 @@ class CategoriesController extends Controller
      */
     public function index()
     {
-        $categories = Category::all();
+        $categories = Category::paginate(5);
         return view('dashboard.categories.index', compact('categories'));
     }
 
@@ -26,7 +27,9 @@ class CategoriesController extends Controller
      */
     public function create()
     {
-        //
+
+        $categories = Category::all();
+        return view('dashboard.categories.create', compact('categories'));
     }
 
     /**
@@ -37,7 +40,12 @@ class CategoriesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //Merge request;
+        $request->merge([
+            'slug' => Str::slug($request->post('name'))
+        ]);
+        $category = Category::create($request->all());
+        return redirect()->route('dashboard.categories.index')->with('success', 'Category Stored Successfully');
     }
 
     /**
