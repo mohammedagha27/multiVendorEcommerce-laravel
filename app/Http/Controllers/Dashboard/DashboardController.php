@@ -1,8 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Dashboard;
 
-class AdminController extends Controller
+use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
+
+class DashboardController extends Controller
 {
     //? another way to apply authMiddleware
     // public function __construct()
