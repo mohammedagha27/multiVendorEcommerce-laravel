@@ -10,8 +10,10 @@ use Illuminate\Support\Facades\Route;
 // });
 
 Auth::routes();
-Route::prefix('admin')->name('admin.')->controller(AdminController::class)->middleware(['auth'])->group(function () {
+Route::prefix('dashboard')->name('dashboard.')->controller(AdminController::class)->middleware(['auth'])->group(function () {
     Route::get('/', 'index')->name('index');
+    Route::get('/v2', 'indexV2')->name('index2');
+    Route::get('/v3', 'indexV3')->name('index3');
 });
 
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
