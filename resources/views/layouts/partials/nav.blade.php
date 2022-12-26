@@ -26,7 +26,7 @@
                 </li>
                 <li class="nav-item">
                     <a href="{{ route('dashboard.index3') }}"
-                        class="nav-link {{ Request::is('dashboard/v') ? 'active' : '' }}">
+                        class="nav-link {{ Request::is('dashboard/v3') ? 'active' : '' }}">
                         <i class="far fa-circle nav-icon"></i>
                         <p>Dashboard v3</p>
                     </a>
