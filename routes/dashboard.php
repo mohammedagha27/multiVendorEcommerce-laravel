@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Dashboard\CategoriesController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Dashboard\DashboardController;
 
@@ -7,4 +8,5 @@ Route::prefix('dashboard')->name('dashboard.')->controller(DashboardController::
     Route::get('/', 'index')->name('index');
     Route::get('/v2', 'indexV2')->name('index2');
     Route::get('/v3', 'indexV3')->name('index3');
+    Route::resource('categories', CategoriesController::class);
 });
